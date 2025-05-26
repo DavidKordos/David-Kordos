@@ -9,9 +9,9 @@ main.c
 int main() {
 
     srand((unsigned)time(NULL));  // Inicijalizacija generatora slučajnih brojeva
-    FILE* file = fopen("films.txt", "w+");
+    FILE* file = fopen("films.txt", "r+");
     if (!file) {
-        file = fopen("films.txt", "w+");
+        file = fopen("films.txt", "w+");  // Ako file ne postoji, kreiraj ga
         if (!file) {
             perror("Ne mogu otvoriti datoteku");
             return 1;
@@ -35,13 +35,13 @@ int main() {
         case 3:
             if (azurirajFilm()) {
                 fclose(file);
-                file = fopen("films.txt", "w+");
+                file = fopen("films.txt", "r+");  // Ponovno otvori datoteku nakon ažuriranja
             }
             break;
         case 4:
             if (obrisiFilm()) {
                 fclose(file);
-                file = fopen("films.txt", "w+");
+                file = fopen("films.txt", "r+");  // Ponovno otvori datoteku nakon brisanja
             }
             break;
         case 5:
@@ -84,10 +84,10 @@ void unosFilma(FILE* file) {
 
     film.id = rand();
 
-    fseek(file, 0, SEEK_END);
+    fseek(file, 0, SEEK_END);  // pomakni se na kraj datoteke
     fprintf(file, "%d;%s;%s;%d;%d\n", film.id, film.naziv, film.zanr, film.godina, film.trajanje);
 
-    getchar();
+    getchar();  // Konzumiraj newline slovo
 }
 
 void ispisFilmove(FILE* file) {
@@ -171,19 +171,20 @@ int azurirajFilm() {
     return 1;
 }
 
-
 int obrisiFilm() {
     int id, found = 0;
     printf("Unesite ID filma koji zelite obrisati: ");
     scanf("%d", &id);
     getchar();
 
-    FILE* file = fopen("films.txt", "w");
+    // Otvori originalnu datoteku za čitanje i pisanje (bez brisanja sadržaja)
+    FILE* file = fopen("films.txt", "r+");
     if (!file) {
         perror("Greska pri otvaranju datoteke");
         return 0;
     }
 
+    // Otvori privremenu datoteku za pisanje
     FILE* tempFile = fopen("temp.txt", "w");
     if (!tempFile) {
         perror("Greska pri otvaranju privremene datoteke");
@@ -215,6 +216,7 @@ int obrisiFilm() {
     rename("temp.txt", "films.txt");
     return 1;
 }
+
 film.h
 #ifndef FILM_H
 #define FILM_H
