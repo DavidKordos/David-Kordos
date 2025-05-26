@@ -1,5 +1,4 @@
-
-#ifndef FILM_H
+#ifndef FILM_H 
 #define FILM_H
 
 #include <stdio.h>
@@ -7,7 +6,8 @@
 #include <string.h>
 #include <errno.h>
 
-// Enum za izbornik
+#define PRINT_LINE printf("------------------------------\n")
+
 typedef enum {
     DODAJ_FILM = 1,
     PRIKAZI_FILMOVE,
@@ -15,10 +15,11 @@ typedef enum {
     OBRISI_FILM,
     SORTIRAJ_FILMOVE,
     PRETRAZI_FILM,
-    IZLAZ
+    REKURZIVNI_ISPIS,
+    BACKUP_FILMOVA,
+    IZLAZ,
 } IzbornikOpcije;
 
-// Struktura za film
 typedef struct {
     int id;
     char naziv[100];
@@ -26,22 +27,25 @@ typedef struct {
     float trajanje;
 } Film;
 
-// Èvor povezane liste
 typedef struct cvor {
     Film film;
     struct cvor* sljedeci;
 } Cvor;
 
-// Funkcije
 void prikaziIzbornik();
 void dodajFilm(Cvor** glava);
 void prikaziFilmove(const Cvor* glava);
+void ispisiRekurzivno(const Cvor* glava);
 void azurirajFilm(Cvor* glava);
 void obrisiFilm(Cvor** glava);
 void ucitajFilmove(Cvor** glava);
 void spremiFilmove(const Cvor* glava);
 void sortirajFilmove(Cvor** glava);
 void pretraziFilm(const Cvor* glava);
+void pretraziFilmBsearch(Cvor* glava);
 void oslobodiMemoriju(Cvor** glava);
+void backupFilmova();
 
 #endif // FILM_H
+
+
