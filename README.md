@@ -59,13 +59,6 @@ Projekt pokriva svih **26 obaveznih koncepata** traženih u zadatku:
 25. Rekurzivne funkcije (opcija: binary search ili merge sort)
 26. Pokazivači na funkcije uz `qsort()` i `bsearch()`
 
----
-
- Primjer zapisa u datoteci
-
-1,Matrix,Sci-Fi,136.00
-2,Inception,Sci-Fi,148.00
-3,The Godfather,Crime,175.00
 
 
 ---
