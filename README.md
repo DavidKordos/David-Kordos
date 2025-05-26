@@ -28,16 +28,6 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 
 ---
 
- Struktura projekta
- 
-/Videoteka
-
-│
-├── film.c # Implementacija svih funkcija vezanih uz rad s filmovima
-├── film.h # Deklaracije struktura i funkcija
-├── main.c # Ulazna točka programa, izbornik i upravljanje logikom
-├── filmovi.txt # Vanjska tekstualna datoteka za pohranu filmova
-├── README.md # Dokumentacija projekta
 
 
 ---
