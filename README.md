@@ -26,22 +26,6 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 - Datoteke: `main.c`, `film.c`, `film.h`
 - Format datoteke: tekstualna (.txt)
 
----
-
-
-
----
- Kompilacija i pokretanje
-
- U Visual Studio:
-
-1. Otvori **Visual Studio**.
-2. Kreiraj novi **C++ Empty Project**.
-3. Učitaj datoteke `main.c`, `film.c`, `film.h`.
-4. U svojstva projekta:
-   - Idi na `Configuration Properties > C/C++ > Advanced`
-   - Promijeni `Compile As` u `Compile as C Code (/TC)`
-5. Buildaj i pokreni program (`Ctrl + F5`).
 
 ---
  Pokriveni koncepti
