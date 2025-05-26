@@ -29,7 +29,9 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 ---
 
  Struktura projekta
+ 
 /Videoteka
+
 │
 ├── film.c # Implementacija svih funkcija vezanih uz rad s filmovima
 ├── film.h # Deklaracije struktura i funkcija
