@@ -68,7 +68,7 @@ Projekt pokriva svih **26 obaveznih koncepata** traženih u zadatku:
 - Program je pisan na **hrvatskom jeziku**
 - Ne koristi specijalna slova (š, č, ž) u varijablama, ali koristi u ispisima
 - Sve funkcionalnosti su ručno implementirane
- Licenca
+
 
 Ovaj projekt je edukativnog karaktera i može se slobodno koristiti u obrazovne svrhe.
 
