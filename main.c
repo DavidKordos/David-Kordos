@@ -1,11 +1,10 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "film.h"
 
-// Definiranje globalne liste pomoæu extern
+// Globalna lista
 Cvor* glava = NULL;
 
 int main() {
@@ -16,7 +15,7 @@ int main() {
         prikaziIzbornik();
         if (scanf("%d", &izbor) != 1) {
             fprintf(stderr, "\nNeispravan unos.\n");
-            while (getchar() != '\n'); // èišæenje buffera
+            while (getchar() != '\n');
             continue;
         }
 
@@ -37,7 +36,13 @@ int main() {
             sortirajFilmove(&glava);
             break;
         case PRETRAZI_FILM:
-            pretraziFilm(glava);
+            pretraziFilmBsearch(glava); // zamjena linijske s bsearch
+            break;
+        case REKURZIVNI_ISPIS:
+            ispisiRekurzivno(glava);
+            break;
+        case BACKUP_FILMOVA:
+            backupFilmova(glava);
             break;
         case IZLAZ:
             spremiFilmove(glava);
@@ -51,3 +56,4 @@ int main() {
 
     return 0;
 }
+
