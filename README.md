@@ -1,24 +1,24 @@
-# 🎬 Videoteka - Sustav za evidenciju filmova
+Videoteka - Sustav za evidenciju filmova
 
 Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u videoteci, razvijen u programskom jeziku C. Sadrži potpunu implementaciju CRUID operacija, rad s datotekama, rad s pokazivačima, memorijom, strukturama, kao i dodatne funkcionalnosti poput sortiranja, pretraživanja i upravljanja memorijom.
 
 ---
 
-## 🧩 Funkcionalnosti
+ Funkcionalnosti
 
-- ✅ Dodavanje novih filmova
-- 📜 Prikaz svih spremljenih filmova
-- 🔁 Ažuriranje podataka postojećeg filma
-- ❌ Brisanje filma iz evidencije
-- 🔍 Pretraživanje filmova po ID-u
-- 📊 Sortiranje filmova po nazivu ili trajanju
-- 💾 Spremanje i učitavanje podataka iz tekstualne datoteke
-- 🧠 Upravljanje dinamičkom memorijom
-- 🔐 Zaštita pokazivača i provjera grešaka
+- Dodavanje novih filmova
+- Prikaz svih spremljenih filmova
+- Ažuriranje podataka postojećeg filma
+- Brisanje filma iz evidencije
+-  Pretraživanje filmova po ID-u
+-  Sortiranje filmova po nazivu ili trajanju
+-  Spremanje i učitavanje podataka iz tekstualne datoteke
+-  Upravljanje dinamičkom memorijom
+-  Zaštita pokazivača i provjera grešaka
 
 ---
 
-## 🧪 Tehnologije i alati
+ Tehnologije i alati
 
 - Programski jezik: **C**
 - IDE: Visual Studio (C++ Empty Project s C datotekama)
@@ -28,7 +28,7 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 
 ---
 
-## 📂 Struktura projekta
+ Struktura projekta
 /Videoteka
 │
 ├── film.c # Implementacija svih funkcija vezanih uz rad s filmovima
@@ -39,10 +39,9 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 
 
 ---
+ Kompilacija i pokretanje
 
-## 🔧 Kompilacija i pokretanje
-
-### ✔️ U Visual Studio:
+ U Visual Studio:
 
 1. Otvori **Visual Studio**.
 2. Kreiraj novi **C++ Empty Project**.
@@ -53,8 +52,7 @@ Ovaj projekt predstavlja jednostavan konzolni program za evidenciju filmova u vi
 5. Buildaj i pokreni program (`Ctrl + F5`).
 
 ---
-
-## 🧠 Pokriveni koncepti
+ Pokriveni koncepti
 
 Projekt pokriva svih **26 obaveznih koncepata** traženih u zadatku:
 
@@ -87,7 +85,7 @@ Projekt pokriva svih **26 obaveznih koncepata** traženih u zadatku:
 
 ---
 
-## 📘 Primjer zapisa u datoteci
+ Primjer zapisa u datoteci
 
 1,Matrix,Sci-Fi,136.00
 2,Inception,Sci-Fi,148.00
@@ -96,15 +94,12 @@ Projekt pokriva svih **26 obaveznih koncepata** traženih u zadatku:
 
 ---
 
-## 🧹 Napomena
+ Napomena
 
 - Program je pisan na **hrvatskom jeziku**
 - Ne koristi specijalna slova (š, č, ž) u varijablama, ali koristi u ispisima
 - Sve funkcionalnosti su ručno implementirane
-
----
-
-## 📜 Licenca
+ Licenca
 
 Ovaj projekt je edukativnog karaktera i može se slobodno koristiti u obrazovne svrhe.
 
