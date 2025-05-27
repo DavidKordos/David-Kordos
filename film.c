@@ -1,5 +1,4 @@
 
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "film.h"
@@ -52,14 +51,25 @@ void prikaziFilmove(const Cvor* glava) {
         glava = (*glava).sljedeci;
     }
 }
-
 void ispisiRekurzivno(const Cvor* glava) {
-    if (!glava) return;
+    static int pozicija = 1; // Brojac za redni broj poziva
+    if (!glava) {
+        pozicija = 1; // Reset brojača pri završetku rekurzije
+        return;
+    }
+
+    printf("[Rekurzija %d] ", pozicija++);
     PRINT_LINE;
     printf("ID: %d\nNaziv: %s\nZanr: %s\nTrajanje: %.2f min\n",
-        (*glava).film.id, (*glava).film.naziv, (*glava).film.zanr, (*glava).film.trajanje);
+        (*glava).film.id, (*glava).film.naziv,
+        (*glava).film.zanr, (*glava).film.trajanje);
+
     ispisiRekurzivno((*glava).sljedeci);
 }
+
+
+
+
 
 void azurirajFilm(Cvor* glava) {
     int id;
@@ -240,13 +250,7 @@ void sortirajFilmove(Cvor** glava) {
 
     free(niz);
 }
-void ispisiRekurzivno(const Cvor* glava) {
-    if (glava == NULL) return;
-    printf("ID: %d | Naziv: %s | Zanr: %s | Trajanje: %.2f min\n",
-        (*glava).film.id, (*glava).film.naziv,
-        (*glava).film.zanr, (*glava).film.trajanje);
-    ispisiRekurzivno((*glava).sljedeci);
-}
+
 
 void backupFilmova() {
     if (rename(IME_DATOTEKE, BACKUP_DATOTEKA) == 0)
@@ -262,6 +266,9 @@ void oslobodiMemoriju(Cvor** glava) {
         free(temp);
     }
 }
+
+
+
 
 
 
