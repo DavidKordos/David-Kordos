@@ -47,7 +47,7 @@ void pretraziFilmBsearch(Cvor* glava);
 void oslobodiMemoriju(Cvor** glava);
 void backupFilmova();
 
-#endif // FILM_H
+#endif 
 
 
 
