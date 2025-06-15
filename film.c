@@ -52,9 +52,9 @@ void prikaziFilmove(const Cvor* glava) {
     }
 }
 void ispisiRekurzivno(const Cvor* glava) {
-    static int pozicija = 1; // Brojac za redni broj poziva
+    static int pozicija = 1;
     if (!glava) {
-        pozicija = 1; // Reset brojača pri završetku rekurzije
+        pozicija = 1;
         return;
     }
 
@@ -118,47 +118,74 @@ void obrisiFilm(Cvor** glava) {
     printf("Film nije pronaden.\n");
 }
 
-void ucitajFilmove(Cvor** glava) {
-    if (!glava) return;
+void ucitajFilmove(Cvor** glava) {                                                  
+                                           
+    if (!glava) return;                 
 
-    FILE* dat = fopen(IME_DATOTEKE, "r");
-    if (!dat) {
-        if (errno != ENOENT) perror("Ne mogu otvoriti datoteku");
-        return;
+    FILE* dat = fopen(IME_DATOTEKE, "r");                        
+    if (!dat) {                                                
+        if (errno != ENOENT) perror("Ne mogu otvoriti datoteku");  
+        return;                                                 
     }
 
-    rewind(dat);
+    rewind(dat);                                         
 
-    Film f;
-    while (fscanf(dat, "%d,%99[^,],%49[^,],%f\n", &f.id, f.naziv, f.zanr, &f.trajanje) == 4) {
-        Cvor* novi = malloc(sizeof(Cvor));
-        if (!novi) {
-            perror("Greska alokacije");
-            fclose(dat);
-            return;
+    int id;
+    char naziv[100], zanr[50];
+    float trajanje;
+    char linija[256];                             
+   
+
+    while (fgets(linija, sizeof(linija), dat)) {       
+        
+        if (strncmp(linija, "------------------------------", 10) == 0) {               
+            
+            if (fgets(linija, sizeof(linija), dat) &&                     
+                sscanf(linija, "ID: %d", &id) == 1 &&                    
+                fgets(linija, sizeof(linija), dat) &&                  
+                sscanf(linija, "Naziv filma: %99[^\n]", naziv) == 1 &&     
+                fgets(linija, sizeof(linija), dat) &&                     
+                sscanf(linija, "Zanr filma: %49[^\n]", zanr) == 1 &&     
+                fgets(linija, sizeof(linija), dat) &&                     
+                sscanf(linija, "Trajanje filma: %f", &trajanje) == 1) {   
+
+                Cvor* novi = (Cvor*)malloc(sizeof(Cvor));         
+                if (!novi) {                                    
+                    perror("Greska alokacije");           
+                    fclose(dat);                          
+                    return;                                  
+                }
+                (*novi).film.id = id;                         
+                strcpy((*novi).film.naziv, naziv);          
+                strcpy((*novi).film.zanr, zanr);          
+                (*novi).film.trajanje = trajanje;          
+                (*novi).sljedeci = *glava;                
+                *glava = novi;                           
+            }
         }
-        (*novi).film = f;
-        (*novi).sljedeci = *glava;
-        *glava = novi;
     }
-    fclose(dat);
+    fclose(dat);                                         
 }
 
-void spremiFilmove(const Cvor* glava) {
-    FILE* dat = fopen(IME_DATOTEKE, "w");
-    if (!dat) {
-        perror("Ne mogu spremiti");
-        return;
-    }
+void spremiFilmove(const Cvor* glava) {     
+    FILE* dat = fopen(IME_DATOTEKE, "w");    
+    if (!dat) {                            
+        perror("Ne mogu spremiti");         
+        return;                           
+    } 
 
-    rewind(dat);
+    rewind(dat);                           
 
-    while (glava) {
-        fprintf(dat, "%d,%s,%s,%.2f\n", (*glava).film.id, (*glava).film.naziv,
-            (*glava).film.zanr, (*glava).film.trajanje);
-        glava = (*glava).sljedeci;
+    while (glava) {                                        
+        fprintf(dat, "------------------------------\n");
+        fprintf(dat, "ID: %d\n", (*glava).film.id);            
+        fprintf(dat, "Naziv filma: %s\n", (*glava).film.naziv);  
+        fprintf(dat, "Zanr filma: %s\n", (*glava).film.zanr);   
+        fprintf(dat, "Trajanje filma: %.2f min\n", (*glava).film.trajanje);   
+        glava = (*glava).sljedeci;                            
+                                                                           
     }
-    fclose(dat);
+    fclose(dat);                                
 }
 
 int compareFilmID(const void* a, const void* b) {
