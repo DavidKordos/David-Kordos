@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "film.h"
 
-// Globalna lista
+
 Cvor* glava = NULL;
 
 int main() {
