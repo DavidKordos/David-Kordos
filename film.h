@@ -32,6 +32,7 @@ typedef struct cvor {
     struct cvor* sljedeci;
 } Cvor;
 
+extern Cvor* glava;
 void prikaziIzbornik();
 void dodajFilm(Cvor** glava);
 void prikaziFilmove(const Cvor* glava);
