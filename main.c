@@ -37,7 +37,7 @@ int main() {
             sortirajFilmove(&glava);
             break;
         case PRETRAZI_FILM:
-            pretraziFilmBsearch(glava); // zamjena linijske s bsearch
+            pretraziFilmBsearch(glava); 
             break;
         case REKURZIVNI_ISPIS:
             ispisiRekurzivno(glava);
