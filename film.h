@@ -8,7 +8,7 @@
 #include <string.h> 
 #include <errno.h>  
 
-#define PRINT_LINE printf("------------------------------\n")//Makro za ispis linije radi preglednosti ispisa
+#define PRINT_LINE printf("------------------------------\n") 
 
 typedef enum {  //Nabrajanje opcija izbornika koje se koriste u main.c
     DODAJ_FILM = 1,
